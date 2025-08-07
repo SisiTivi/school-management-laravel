@@ -1,0 +1,17 @@
+#main-navbar {
+    background-color: #f7f9f9;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+#navbar-dropdown {
+    list-style: none;
+    padding-left: 0;
+    padding-right: 1rem;
+    color: #36383d;
+}
+
+.navbar .bi-person-circle {
+    font-size: 2rem;
+    color: #36383d;
+}
