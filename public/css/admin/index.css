@@ -1,0 +1,16 @@
+*{
+    font-family: sans-serif;
+}
+#schoolSection{
+    margin-top: 2rem;
+}
+
+#schoolSectionRight{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+th{
+    text-align: center;
+}

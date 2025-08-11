@@ -32,7 +32,7 @@
                 <div class="col-md-12 mb-2">
                     <span>
                         Dont have account ?
-                        <a href="">click here</a>
+                        <a href="{{ route('admin.create-account') }}">click here</a>
                     </span>
                 </div>
                 <!-- login button -->
