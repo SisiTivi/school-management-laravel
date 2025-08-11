@@ -13,20 +13,20 @@
 <body>
     <div class="card">
         <div id="card-content">
-            <div class="card-tittle">
+            <div class="card-title">
                 <h2 class="text-center">LOGIN</h2>
             </div>
-            <form action="" method="POST" class="form">
+            <form action="{{ route('login.process') }}" method="POST" class="form">
                 @csrf
                 <!-- email -->
                 <div class="col-md-12 mb-2">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+                    <input type="email" name="email" class="form-control" id="emailInput" placeholder="Enter email">
                 </div>
                 <!-- password -->
                 <div class="col-md-12 mb-2">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="passwordInput" placeholder="Enter password">
+                    <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter password">
                 </div>
                 <!-- create account -->
                 <div class="col-md-12 mb-2">

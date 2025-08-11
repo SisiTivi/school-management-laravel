@@ -54,7 +54,7 @@ class AdminController extends Controller
             'status' => 'ACTIVE'
         ]);
 
-        return redirect()->route('login')->with('success', 'Account has been created');
+        return redirect()->route('login.form')->with('success', 'Account has been created');
     }
 
     /**

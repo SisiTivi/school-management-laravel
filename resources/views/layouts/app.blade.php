@@ -42,11 +42,26 @@
                         <i class="bi bi-person-circle"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li>
-                            <button class="dropdown-item" type="button"
-                                onclick="">Login
-                            </button>
+                        @if (Auth::check())
+                        <li class="dropdown-item">
+                            welcome, {{ Auth::user()->admin->civility }} {{ Auth::user()->admin->last_name }}
                         </li>
+                        @if (Auth::user()->role=='ADMIN')
+                        <li>
+                            <a href="{{ route('index') }}" class="dropdown-item">
+                                Index menu
+                            </a>
+                        </li>
+                        @endif
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button class="dropdown-item text-danger" type="submit">
+                                    logout
+                                </button>
+                            </form>
+                        </li>
+                        @endif
                     </ul>
                 </li>
             </div>

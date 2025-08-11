@@ -27,6 +27,20 @@
                     <label for="lastName" class="form-label">Last Name</label>
                     <input type="text" name="last_name" class="form-control" id="lastNameInput" placeholder="Enter Last Name" required>
                 </div>
+                <!-- civility -->
+                <div class="col-md-6 mb-2">
+                    <label for="civility" class="form-label">Civility</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="civility" id="civility1" value="MR" checked>
+                            <label class="form-check-label" for="civility1">Mr</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="civility" id="civility2" value="MRS">
+                            <label class="form-check-label" for="civility2">Mrs</label>
+                        </div>
+                    </div>
+                </div>
                 <!-- email -->
                 <div class="col-md-6 mb-2">
                     <label for="email" class="form-label">Email</label>
@@ -56,7 +70,7 @@
                 <div class="col-md-6 mb-2">
                     <span>
                         Already have account ?
-                        <a href="{{ route('login') }}">click here</a>
+                        <a href="{{ route('login.form') }}">click here</a>
                     </span>
                 </div>
                 <!-- login button -->
