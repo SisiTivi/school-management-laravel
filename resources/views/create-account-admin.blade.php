@@ -70,7 +70,7 @@
                 <div class="col-md-6 mb-2">
                     <span>
                         Already have account ?
-                        <a href="{{ route('login.form') }}">click here</a>
+                        <a href="{{ route('login') }}">click here</a>
                     </span>
                 </div>
                 <!-- login button -->

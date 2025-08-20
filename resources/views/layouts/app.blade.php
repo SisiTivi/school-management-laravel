@@ -28,6 +28,11 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <!-- navbar left side -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if (Auth::user()->role=='ADMIN')
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('school.index') }}">School</a>
+                    </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('index') }}">link active</a>
                     </li>

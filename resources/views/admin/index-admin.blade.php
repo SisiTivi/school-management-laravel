@@ -11,7 +11,7 @@
                 <h3>School List</h3>
             </div>
             <div class="col-sm-12 col-md-4" id="schoolSectionRight">
-                <a href="">
+                <a href="{{ route('school.create') }}">
                     <button class="btn btn-primary">
                         Add School
                         <span>

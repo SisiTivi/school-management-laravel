@@ -12,6 +12,7 @@ class Student extends Model
         'first_name',
         'last_name',
         'civility',
+        'school_id',
         'status',
         'date_of_birth'
     ];
@@ -19,5 +20,10 @@ class Student extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class, 'school_id');
     }
 }
