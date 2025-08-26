@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title','Schools')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/school/show-schools.css') }}">
+<link rel="stylesheet" href="{{ asset('css/school/index-schools.css') }}">
 <div class="container">
-    <div class="row justify-content-between" id="title_and_addSchoolButton">
+    <div class="row justify-content-between mt-3" id="title_and_addSchoolButton">
         <div class="col-sm-12 col-md-4" id="schoolSectionLeft">
             <h3>School List</h3>
         </div>
@@ -43,7 +43,7 @@
                     <td>{{ $school->email }}</td>
                     <td>{{ $school->address }}</td>
                     <td>
-                        <a href="" class="btn btn-primary">Detail</a>
+                        <a href="{{ route('school.show',$school) }}" class="btn btn-primary">Detail</a>
                         <a href="" class="btn btn-primary">Edit</a>
                         <form action="" method="POST" id="btn_delete">
                             @csrf

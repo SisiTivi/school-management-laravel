@@ -51,4 +51,7 @@ Route::middleware(['auth', 'Admin'])->group(function () {
     // ********* store school data
     Route::get('admin/school', [SchoolController::class, 'index'])
         ->name('school.index');
+
+    Route::get('admin/school/{school}', [SchoolController::class, 'show'])
+        ->name('school.show');
 });

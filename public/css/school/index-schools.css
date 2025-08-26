@@ -1,0 +1,102 @@
+/* ========================
+   School Index Custom CSS
+   ======================== */
+
+/* Pertahankan aturan lama */
+#btn_delete {
+    display: inline;
+}
+
+#title_and_addSchoolButton {
+    margin-top: 2rem;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#schoolSectionRight {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+/* Title */
+#schoolSectionLeft h3 {
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Add School Button */
+#schoolSectionRight .btn {
+    border-radius: 30px;
+    font-weight: 600;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s;
+}
+#schoolSectionRight .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Table Custom */
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.table thead {
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: 0.2s;
+}
+
+/* Action Buttons */
+td .btn {
+    margin: 2px 0;
+    border-radius: 8px;
+    font-weight: 500;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    border: none;
+}
+.btn-primary:hover {
+    opacity: 0.9;
+}
+.btn-danger {
+    border: none;
+    background: linear-gradient(135deg, #dc3545, #b02a37);
+}
+.btn-danger:hover {
+    opacity: 0.9;
+}
+
+/* Pagination */
+.pagination {
+    gap: 5px;
+}
+.pagination .page-link {
+    border-radius: 8px;
+    color: #007bff;
+}
+.pagination .page-item.active .page-link {
+    background: linear-gradient(135deg, #007bff, #6610f2);
+    border: none;
+    color: white;
+}
