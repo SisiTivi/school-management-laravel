@@ -1,3 +1,17 @@
 #btn_delete {
     display: inline;
 }
+
+#title_and_addSchoolButton{
+    margin-top: 2rem;
+}
+
+#schoolSectionRight{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+th{
+    text-align: center;
+}

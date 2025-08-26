@@ -3,7 +3,21 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/school/show-schools.css') }}">
 <div class="container">
-    <h2 class="my-5">School List</h2>
+    <div class="row justify-content-between" id="title_and_addSchoolButton">
+        <div class="col-sm-12 col-md-4" id="schoolSectionLeft">
+            <h3>School List</h3>
+        </div>
+        <div class="col-sm-12 col-md-4" id="schoolSectionRight">
+            <a href="{{ route('school.create') }}">
+                <button class="btn btn-primary">
+                    Add School
+                    <span>
+                        <i class="bi bi-plus"></i>
+                    </span>
+                </button>
+            </a>
+        </div>
+    </div>
     <section class="col-md-12 mt-3">
         <table class="table table-bordered table-hover">
             <thead>
