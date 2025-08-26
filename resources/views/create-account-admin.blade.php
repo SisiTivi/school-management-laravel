@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row justify-content-between">
             <h2 class="text-center">Create Account</h2>
-            <form action="{{ route('admin.store-account') }}" method="POST" class="form">
+            <form action="{{ route('admin.store') }}" method="POST" class="form">
                 @csrf
                 <!-- first name -->
                 <div class="col-md-6 mb-2">

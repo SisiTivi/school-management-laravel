@@ -47,6 +47,7 @@
                         <a href="{{ route('school.edit',$school) }}" class="btn btn-primary">Edit</a>
                         <form action="" method="POST" id="btn_delete">
                             @csrf
+                            @method('DELETE')
                             <button type="submit" class="btn btn-danger">
                                 Delete
                             </button>

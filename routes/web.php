@@ -31,33 +31,7 @@ Route::middleware(['auth', 'Admin'])->group(function () {
         'admin.index-admin'
     )->name('index.admin');
 
-    // ********* Create account Page
-    Route::get('admin/create-account', [AdminController::class, 'create'])
-        ->name('admin.create-account');
+    Route::resource('admin', AdminController::class);
 
-    // ********* Store account
-    Route::post('admin/account-created', [AdminController::class, 'store'])
-        ->name('admin.store-account');
-
-
-    // ********* Create School Page
-    Route::get('admin/school/create', [SchoolController::class, 'create'])
-        ->name('school.create');
-
-    // ********* store school data
-    Route::post('admin/school/school-created', [SchoolController::class, 'store'])
-        ->name('school.store');
-
-    // ********* store school data
-    Route::get('admin/school', [SchoolController::class, 'index'])
-        ->name('school.index');
-
-    Route::get('admin/school/{school}', [SchoolController::class, 'show'])
-        ->name('school.show');
-
-    Route::get('admin/school/{school}/edit', [SchoolController::class, 'edit'])
-        ->name('school.edit');
-
-    Route::post('admin/school/{school}/update', [SchoolController::class, 'update'])
-        ->name('school.update');
+    Route::resource('admin/school', SchoolController::class);
 });

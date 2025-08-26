@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-between">
         <h2 class="text-center">Create School</h2>
-        <form action="{{ route('school.update') }}" method="POST">
+        <form action="{{ route('school.update',$school->id) }}" method="POST">
             @csrf
             @method('PUT')
             <!-- School Legal Name -->

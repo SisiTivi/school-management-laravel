@@ -97,7 +97,7 @@ class SchoolController extends Controller
             'address' => trim($validated['address']),
         ]);
 
-        return redirect()->route('index.admin')->with('success', 'Create School Success');
+        return redirect()->route('school.show', $school->id)->with('success', 'Update School Success');
     }
 
     /**
@@ -106,5 +106,10 @@ class SchoolController extends Controller
     public function destroy(School $school)
     {
         //
+        $school->update([
+            'status' => 'DELETED'
+        ]);
+
+        return redirect()->route('school.index')->with('success', 'Delete school Success');
     }
 }
