@@ -16,7 +16,7 @@ class SchoolController extends Controller
         $schools = School::where('status', 'ACTIVE')
             ->orderBy('legal_name', 'asc')
             ->paginate(10);
-        return view('school.show-school', compact('schools'));
+        return view('school.index-school', compact('schools'));
     }
 
     /**
