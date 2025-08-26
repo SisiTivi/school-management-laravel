@@ -16,7 +16,9 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="main-navbar">
         <div class="container-fluid">
             <!-- Home -->
-            <a class="navbar-brand" href="{{ route('index') }}">ADMTC KW Super</a>
+            <a class="navbar-brand" href="{{ Auth::user()->getDashboardRouteAttribute() }}">
+                ADMTC KW Super
+            </a>
             <!-- Hamburger icon -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
