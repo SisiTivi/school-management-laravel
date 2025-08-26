@@ -54,4 +54,10 @@ Route::middleware(['auth', 'Admin'])->group(function () {
 
     Route::get('admin/school/{school}', [SchoolController::class, 'show'])
         ->name('school.show');
+
+    Route::get('admin/school/{school}/edit', [SchoolController::class, 'edit'])
+        ->name('school.edit');
+
+    Route::post('admin/school/{school}/update', [SchoolController::class, 'update'])
+        ->name('school.update');
 });

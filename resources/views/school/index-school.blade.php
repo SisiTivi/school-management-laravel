@@ -44,7 +44,7 @@
                     <td>{{ $school->address }}</td>
                     <td>
                         <a href="{{ route('school.show',$school) }}" class="btn btn-primary">Detail</a>
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('school.edit',$school) }}" class="btn btn-primary">Edit</a>
                         <form action="" method="POST" id="btn_delete">
                             @csrf
                             <button type="submit" class="btn btn-danger">

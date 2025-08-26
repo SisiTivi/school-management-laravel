@@ -70,6 +70,7 @@ class SchoolController extends Controller
     public function edit(School $school)
     {
         //
+        return view('school.edit-school', compact('school'));
     }
 
     /**
@@ -78,6 +79,25 @@ class SchoolController extends Controller
     public function update(Request $request, School $school)
     {
         //
+        $validated = $request->validate([
+            'legal_name' => 'required|string|unique:schools,legal_name,' . $school->id . '|max:255',
+            'commercial_name' => 'required|string|max:255',
+            'education_level' => 'required|in:PRIMARY_SCHOOL,JUNIOR_HIGH_SCHOOL,SENIOR_HIGH_SCHOOL',
+            'mobile_phone' => 'required|digits_between:10,15',
+            'email' => 'required|email|unique:schools,email,' . $school->id,
+            'address' => 'required|string'
+        ]);
+
+        $school->update([
+            'legal_name' =>  trim($validated['legal_name']),
+            'commercial_name' => trim($validated['commercial_name']),
+            'education_level' => $validated['education_level'],
+            'mobile_phone' => trim($validated['mobile_phone']),
+            'email' => strtolower(trim($validated['email'])),
+            'address' => trim($validated['address']),
+        ]);
+
+        return redirect()->route('index.admin')->with('success', 'Create School Success');
     }
 
     /**
