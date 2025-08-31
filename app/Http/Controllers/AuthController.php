@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,8 +22,18 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            // create login token
             $request->session()->regenerate();
-            return redirect()->route('index');
+
+            // take user data
+            $user = Auth::user();
+
+            // redirect user based on role
+            if ($user->role === 'ADMIN') {
+                return redirect()->route('index.admin');
+            } else {
+                return redirect()->route('index');
+            }
         }
         return back()->withErrors([
             'email' => 'email atau password salah'
@@ -36,6 +47,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login.form')->with('success', 'logout success');
+        return redirect()->route('login')->with('success', 'logout success');
     }
 }

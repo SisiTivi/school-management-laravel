@@ -16,7 +16,9 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="main-navbar">
         <div class="container-fluid">
             <!-- Home -->
-            <a class="navbar-brand" href="{{ route('index') }}">ADMTC KW Super</a>
+            <a class="navbar-brand" href="{{ Auth::user()->getDashboardRouteAttribute() }}">
+                ADMTC KW Super
+            </a>
             <!-- Hamburger icon -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
@@ -28,6 +30,11 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <!-- navbar left side -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if (Auth::user()->role=='ADMIN')
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('school.index') }}">School</a>
+                    </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ route('index') }}">link active</a>
                     </li>

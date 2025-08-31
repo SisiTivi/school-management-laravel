@@ -54,7 +54,7 @@ class AdminController extends Controller
             'status' => 'ACTIVE'
         ]);
 
-        return redirect()->route('login.form')->with('success', 'Account has been created');
+        return redirect()->route('login')->with('success', 'Account has been created');
     }
 
     /**
@@ -87,5 +87,16 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         //
+        $admin->update([
+            'status' => 'DELETED'
+        ]);
+
+        if ($admin->user) {
+            $admin->user->update([
+                'status' => 'DELETED'
+            ]);
+        }
+
+        return redirect()->route('index.admin')->with('success', 'Delete Account success');
     }
 }

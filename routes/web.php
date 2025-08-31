@@ -2,16 +2,18 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\Route;
 
 // ********* Home
 Route::get('/', function () {
     return view('welcome');
-})->name('index');
+})->name('index')
+    ->middleware('auth');
 
 // ********* Login Page
-Route::get('login', [AuthController::class, 'loginpage'])
-    ->name('login.form');
+Route::get('login', [AuthController::class, 'loginPage'])
+    ->name('login');
 
 // ********* Login
 Route::post('login', [AuthController::class, 'login'])
@@ -22,16 +24,14 @@ Route::post('logout', [AuthController::class, 'logout'])
     ->name('logout')
     ->middleware('auth');
 
-// ********* Create account Page
-Route::get('admin/create-account', [AdminController::class, 'create'])
-    ->name('admin.create-account');
 
-// ********* Store account
-Route::post('admin/account-created', [AdminController::class, 'store'])
-    ->name('admin.store-account');
+Route::middleware(['auth', 'Admin'])->group(function () {
+    Route::view(
+        'admin/index',
+        'admin.index-admin'
+    )->name('index.admin');
 
+    Route::resource('admin', AdminController::class);
 
-Route::view(
-    'admin/index',
-    'admin.index-admin'
-)->name('index.admin');
+    Route::resource('admin/school', SchoolController::class);
+});

@@ -11,13 +11,18 @@ class Student extends Model
         'user_id',
         'first_name',
         'last_name',
-        'civility',
-        'status',
+        'gender',
+        'school_id',
         'date_of_birth'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class, 'school_id');
     }
 }

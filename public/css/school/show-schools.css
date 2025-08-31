@@ -1,0 +1,23 @@
+/* Card Custom */
+    .custom-card .card-header {
+        background: linear-gradient(135deg, #007bff, #6610f2);
+        font-weight: bold;
+    }
+    .custom-card {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    /* Table Custom */
+    .custom-table {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .custom-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+    }
+    .custom-table tbody tr:hover {
+        background-color: #f1f1f1;
+        transition: 0.2s;
+    }
