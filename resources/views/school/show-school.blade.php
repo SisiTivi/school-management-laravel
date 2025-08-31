@@ -85,7 +85,7 @@
             <div class="card custom-card shadow-sm border-0">
                 <div class="card-header text-white  d-flex justify-content-between align-items-center">
                     <h4 class="mb-0">Teachers</h4>
-                    <a href="" class="btn btn-primary btn-sm"><i class="bi bi-plus"></i>Add Teachers</a>
+                    <a href="{{ route('school.teacher.create',$school->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-plus"></i>Add Teachers</a>
                 </div>
                 <div class="card-body">
                     <table class="table custom-table table-striped">
