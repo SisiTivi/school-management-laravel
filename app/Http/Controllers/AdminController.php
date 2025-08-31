@@ -87,5 +87,16 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         //
+        $admin->update([
+            'status' => 'DELETED'
+        ]);
+
+        if ($admin->user) {
+            $admin->user->update([
+                'status' => 'DELETED'
+            ]);
+        }
+
+        return redirect()->route('index.admin')->with('success', 'Delete Account success');
     }
 }

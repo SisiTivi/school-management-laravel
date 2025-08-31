@@ -11,9 +11,8 @@ class Student extends Model
         'user_id',
         'first_name',
         'last_name',
-        'civility',
+        'gender',
         'school_id',
-        'status',
         'date_of_birth'
     ];
 
