@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Teacher;
+use App\Models\School;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -11,18 +12,34 @@ class TeacherController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($school_id = null)
     {
         //
+        if ($school_id) {
+            $teachers = Teacher::with('school', 'user')
+                ->where('school_id', $school_id)
+                ->where('status', 'ACTIVE')
+                ->orderBy('first_name')
+                ->paginate(10);
+        } else {
+            $teachers = Teacher::with('school', 'user')
+                ->where('status', 'ACTIVE')
+                ->orderBy('first_name')
+                ->paginate(10);
+        }
+
+        return view('teacher.index-teachers', compact('teachers'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($school_id)
     {
         //
-        return view('teacher.create-teacher');
+
+        $school = School::findOrFail($school_id);
+        return view('teacher.create-teacher', compact('school'));
     }
 
     /**
@@ -37,13 +54,14 @@ class TeacherController extends Controller
             'gender' => 'required|in:MALE,FEMALE',
             'subject' => 'required|max:2055',
             'phone_number' => 'required|digits_between:10,15',
-            'email' => 'required|email|unique:teachers,email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|string',
         ]);
 
         $user = User::create([
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
+            'phone_number' => $validated['phone_number'],
             'role' => 'TEACHER'
         ]);
 
@@ -56,7 +74,7 @@ class TeacherController extends Controller
             'subject' => $validated['subject']
         ]);
 
-        return redirect()->route('school.show')->with('success', 'Create Teacher Success');
+        return redirect()->route('school.show', $school_id)->with('success', 'Create Teacher Success');
     }
 
     /**
@@ -89,5 +107,10 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         //
+        $teacher = teacher::update([
+            'status' => 'DELETED'
+        ]);
+
+        return redirect()->route('school.teacher.index');
     }
 }

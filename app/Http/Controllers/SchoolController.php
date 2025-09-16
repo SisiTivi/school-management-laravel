@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\School;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
@@ -12,7 +13,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        //
+        //find school with active status
         $schools = School::where('status', 'ACTIVE')
             ->orderBy('legal_name', 'asc')
             ->paginate(10);
@@ -33,7 +34,7 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate input
         $validated = $request->validate([
             'legal_name' => 'required|string|unique:schools,legal_name|max:255',
             'commercial_name' => 'required|string|max:255',
@@ -61,7 +62,13 @@ class SchoolController extends Controller
     public function show(School $school)
     {
         //
-        return view('school.show-school', compact('school'));
+        $teachers = $school->teachers()
+            ->with('user')
+            ->where('status', 'ACTIVE')
+            ->orderBy('first_name')
+            ->get();
+
+        return view('school.show-school', compact('school', 'teachers'));
     }
 
     /**

@@ -91,31 +91,49 @@
                     <table class="table custom-table table-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Teacher Name</th>
-                                <th>Email</th>
+                                <th width="2%">No</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Gender</th>
+                                <th>School</th>
                                 <th>Subject</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- contoh data dummy --}}
+                            @forelse ($teachers as $index => $teacher)
                             <tr>
-                                <td>1</td>
-                                <td>Mr. Alex</td>
-                                <td>alex@example.com</td>
-                                <td>Mathematics</td>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $teacher->first_name }}</td>
+                                <td>{{ $teacher->last_name }}</td>
+                                <td>{{ ucwords(strtolower($teacher->gender)) }}</td>
+                                <td>{{ $teacher->school->legal_name }}</td>
+                                <td>{{ $teacher->subject }}</td>
+                                <td>{{ $teacher->user->phone_number }}</td>
+                                <td>{{ $teacher->user->email }}</td>
+                                <td>
+                                    <a href="" class="btn btn-primary">Detail</a>
+                                    <a href="" class="btn btn-primary">Edit</a>
+                                    <form action="" method="POST" id="btn_delete">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
+                            @empty
                             <tr>
-                                <td>2</td>
-                                <td>Mrs. Clara</td>
-                                <td>clara@example.com</td>
-                                <td>English</td>
+                                <td colspan="9" class="text-center">No teachers found</td>
                             </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

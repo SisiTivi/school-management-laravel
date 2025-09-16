@@ -2,10 +2,14 @@
 @section('title','Create School')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/school/create-school.css') }}">
-<div class="container">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!-- icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<div class="container mb-5">
     <div class="row justify-content-between">
         <h2 class="text-center">Create Teacher</h2>
-        <form action="" method="POST">
+        <form action="{{ route('school.teacher.store',$school->id) }}" method="POST">
             @csrf
             <!-- Teacher first name -->
             <div class="col-md-6 mb-2">
@@ -70,7 +74,7 @@
                 </div>
             </div>
             <!-- confirm password -->
-            <div class="col-md-6 mb-2">
+            <div class="col-md-6 mb-5">
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
                 <div class="input-group">
                     <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Enter confirm password" required>
@@ -82,7 +86,7 @@
             @error('email')
             <div class="text-danger">{{ $message }}</div>
             @enderror
-            <button type="submit" class="btn btn-primary">Create School</button>
+            <button type="submit" class="btn btn-primary">Create Teacher</button>
         </form>
     </div>
 </div>
@@ -125,7 +129,4 @@
     togglePasswordVisibility();
 </script>
 
-<script type="text/javascript" src="js/mdb.umd.min.js"></script>
-<!--icon-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 @endsection

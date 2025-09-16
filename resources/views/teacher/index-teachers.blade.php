@@ -1,0 +1,67 @@
+@extends('layouts.app')
+@section('title','Schools')
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/teacher/index-teachers.css') }}">
+<div class="container">
+    <div class="row justify-content-between mt-3" id="title_and_addSchoolButton">
+        <div class="col-sm-12 col-md-4" id="schoolSectionLeft">
+            <h3>School List</h3>
+        </div>
+        <div class="col-sm-12 col-md-4" id="schoolSectionRight">
+            <a href="{{ route('school.create') }}">
+                <button class="btn btn-primary">
+                    Add School
+                    <span>
+                        <i class="bi bi-plus"></i>
+                    </span>
+                </button>
+            </a>
+        </div>
+    </div>
+    <section class="col-md-12 mt-3">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th width="2%">No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>School</th>
+                    <th>subject</th>
+                    <th>phone_number</th>
+                    <th>email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($teachers as $index => $teacher)
+                <tr>
+                    <td>{{ $teachers->firstItem() + $index }}</td>
+                    <td>{{ $teacher->first_name }}</td>
+                    <td>{{ $teacher->last_name }}</td>
+                    <td>{{ ucwords(strtolower($teacher->gender)) }}</td>
+                    <td>{{ $teacher->school->legal_name }}</td>
+                    <td>{{ $teacher->subject }}</td>
+                    <td>{{ $teacher->phone_number }}</td>
+                    <td>{{ $teacher->user->email }}</td>
+                    <td>
+                        <a href="" class="btn btn-primary">Detail</a>
+                        <a href="" class="btn btn-primary">Edit</a>
+                        <form action="" method="POST" id="btn_delete">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center mt-3">
+            {{ $teachers->links() }}
+        </div>
+    </section>
+</div>
+@endsection

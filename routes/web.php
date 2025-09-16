@@ -34,9 +34,13 @@ Route::middleware(['auth', 'Role:ADMIN'])->group(function () {
 
     Route::resource('admin', AdminController::class);
 
-    Route::resource('admin/school', SchoolController::class);
+    Route::resource('school', SchoolController::class);
 });
 
 Route::middleware(['auth', 'Role:ADMIN,TEACHER'])->group(function () {
+    // if nest with school
     Route::resource('school.teacher', TeacherController::class);
+
+    // standalone route
+    Route::resource('teacher', TeacherController::class);
 });
