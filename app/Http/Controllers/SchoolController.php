@@ -44,6 +44,7 @@ class SchoolController extends Controller
             'address' => 'required|string'
         ]);
 
+        //create school
         School::create([
             'legal_name' =>  trim($validated['legal_name']),
             'commercial_name' => trim($validated['commercial_name']),
@@ -53,7 +54,8 @@ class SchoolController extends Controller
             'address' => trim($validated['address']),
         ]);
 
-        return redirect()->route('index.admin')->with('success', 'Create School Success');
+        // redirect after complete
+        return redirect()->route('school.index')->with('success', 'Create School Success');
     }
 
     /**
@@ -61,7 +63,7 @@ class SchoolController extends Controller
      */
     public function show(School $school)
     {
-        //
+        //find teacher belongs to the school
         $teachers = $school->teachers()
             ->with('user')
             ->where('status', 'ACTIVE')
@@ -85,7 +87,7 @@ class SchoolController extends Controller
      */
     public function update(Request $request, School $school)
     {
-        //
+        //validate input
         $validated = $request->validate([
             'legal_name' => 'required|string|unique:schools,legal_name,' . $school->id . '|max:255',
             'commercial_name' => 'required|string|max:255',
@@ -95,6 +97,7 @@ class SchoolController extends Controller
             'address' => 'required|string'
         ]);
 
+        // update the old data
         $school->update([
             'legal_name' =>  trim($validated['legal_name']),
             'commercial_name' => trim($validated['commercial_name']),
@@ -112,7 +115,7 @@ class SchoolController extends Controller
      */
     public function destroy(School $school)
     {
-        //
+        //change status to deleted (soft delete)
         $school->update([
             'status' => 'DELETED'
         ]);
