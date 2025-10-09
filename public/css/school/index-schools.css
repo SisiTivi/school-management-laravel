@@ -14,7 +14,7 @@
     border-radius: 15px;
     background: linear-gradient(135deg, #007bff, #6610f2);
     color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #schoolSectionRight {
@@ -48,12 +48,13 @@
     border-radius: 12px;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .table thead {
     background: #f8f9fa;
     font-weight: 600;
+    text-align: center;
 }
 
 .table th,

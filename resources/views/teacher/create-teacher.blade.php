@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Create School')
+@section('title','Create Teacher')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/school/create-school.css') }}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"

@@ -42,10 +42,10 @@
                     <td>{{ ucwords(strtolower($teacher->gender)) }}</td>
                     <td>{{ $teacher->school->legal_name }}</td>
                     <td>{{ $teacher->subject }}</td>
-                    <td>{{ $teacher->phone_number }}</td>
+                    <td>{{ $teacher->user->phone_number }}</td>
                     <td>{{ $teacher->user->email }}</td>
                     <td>
-                        <a href="" class="btn btn-primary">Detail</a>
+                        <a href="{{ route('teacher.show') }}" class="btn btn-primary">Detail</a>
                         <a href="" class="btn btn-primary">Edit</a>
                         <form action="" method="POST" id="btn_delete">
                             @csrf

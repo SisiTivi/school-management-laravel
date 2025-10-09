@@ -14,14 +14,17 @@ class TeacherController extends Controller
      */
     public function index($school_id = null)
     {
-        //
+        // create different access to teacher index
+        // if access from school detail
         if ($school_id) {
             $teachers = Teacher::with('school', 'user')
                 ->where('school_id', $school_id)
                 ->where('status', 'ACTIVE')
                 ->orderBy('first_name')
                 ->paginate(10);
-        } else {
+        }
+        // if access from index
+        else {
             $teachers = Teacher::with('school', 'user')
                 ->where('status', 'ACTIVE')
                 ->orderBy('first_name')
@@ -36,8 +39,7 @@ class TeacherController extends Controller
      */
     public function create($school_id)
     {
-        //
-
+        // find school id where the teacher want to be added
         $school = School::findOrFail($school_id);
         return view('teacher.create-teacher', compact('school'));
     }
@@ -47,7 +49,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request, $school_id)
     {
-        //
+        // validate input
         $validated = $request->validate([
             'first_name' => 'string|required|max:2055',
             'last_name' => 'string|nullable|max:2055',
@@ -58,6 +60,7 @@ class TeacherController extends Controller
             'password' => 'required|string',
         ]);
 
+        // create user based on input
         $user = User::create([
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
@@ -65,6 +68,7 @@ class TeacherController extends Controller
             'role' => 'TEACHER'
         ]);
 
+        // create teacher based on input
         Teacher::create([
             'user_id' => $user->id,
             'school_id' => $school_id,
@@ -82,7 +86,8 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        //
+        //find user based on id teaacher
+        return view('teacher.show-teacher', compact('teacher'));
     }
 
     /**
@@ -107,7 +112,7 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         //
-        $teacher = teacher::update([
+        $teacher->update([
             'status' => 'DELETED'
         ]);
 

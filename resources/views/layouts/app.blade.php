@@ -36,7 +36,7 @@
                     </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">link active</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('teacher.index') }}">Teacher</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
