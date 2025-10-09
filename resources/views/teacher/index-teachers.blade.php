@@ -45,7 +45,7 @@
                     <td>{{ $teacher->user->phone_number }}</td>
                     <td>{{ $teacher->user->email }}</td>
                     <td>
-                        <a href="{{ route('teacher.show') }}" class="btn btn-primary">Detail</a>
+                        <a href="{{ route('teacher.show',$teacher) }}" class="btn btn-primary">Detail</a>
                         <a href="" class="btn btn-primary">Edit</a>
                         <form action="" method="POST" id="btn_delete">
                             @csrf

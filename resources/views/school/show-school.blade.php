@@ -114,7 +114,9 @@
                                 <td>{{ $teacher->user->phone_number }}</td>
                                 <td>{{ $teacher->user->email }}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary"><i class="bi bi-search"></i></a>
+                                    <a href="{{ route('school.teacher.show',[$school,$teacher]) }}" class="btn btn-primary">
+                                        <i class="bi bi-search"></i>
+                                    </a>
                                     <a href="" class="btn btn-primary"><i class="bi bi-pen"></i></a>
                                     <form action="" method="POST" id="btn_delete">
                                         @csrf

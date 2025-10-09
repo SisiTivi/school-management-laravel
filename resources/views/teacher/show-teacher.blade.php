@@ -32,7 +32,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <strong>Phone Number</strong>
-                            <span>{{ $teacher->phone_number }}</span>
+                            <span>{{ $teacher->user->phone_number }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <strong>Email</strong>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="card-footer text-center bg-light">
-                    <a href="{{ route('school.index') }}" class="btn btn-secondary btn-sm">Back</a>
+                    <a href="{{ isset($school)? route('school.show',$school): route('teacher.index') }}" class="btn btn-secondary btn-sm">Back</a>
                 </div>
             </div>
         </div>

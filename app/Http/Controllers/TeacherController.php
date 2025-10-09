@@ -84,10 +84,10 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Teacher $teacher)
+    public function show(School $school, Teacher $teacher)
     {
         //find user based on id teaacher
-        return view('teacher.show-teacher', compact('teacher'));
+        return view('teacher.show-teacher', compact('teacher', 'school'));
     }
 
     /**

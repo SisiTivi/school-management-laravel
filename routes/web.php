@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TeacherStandAloneController;
 use Illuminate\Support\Facades\Route;
 
 // ********* Home
@@ -41,6 +42,14 @@ Route::middleware(['auth', 'Role:ADMIN,TEACHER'])->group(function () {
     // if nest with school
     Route::resource('school.teacher', TeacherController::class);
 
-    // standalone route
-    Route::resource('teacher', TeacherController::class);
+
+    Route::prefix('teacher')->name('teacher.')->group(function () {
+        // standalone route index
+        Route::get('/', [TeacherStandAloneController::class, 'index'])
+            ->name('index');
+
+        // standalone route show
+        Route::get('/{teacher}', [TeacherStandAloneController::class, 'show'])
+            ->name('show');
+    });
 });
