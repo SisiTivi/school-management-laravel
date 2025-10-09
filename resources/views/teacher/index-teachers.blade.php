@@ -45,13 +45,13 @@
                     <td>{{ $teacher->user->phone_number }}</td>
                     <td>{{ $teacher->user->email }}</td>
                     <td>
-                        <a href="{{ route('teacher.show',$teacher) }}" class="btn btn-primary">Detail</a>
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('teacher.show',$teacher) }}" class="btn btn-primary"><i class="bi bi-search"></i></a>
+                        <a href="" class="btn btn-primary"><i class="bi bi-pen"></i></a>
                         <form action="" method="POST" id="btn_delete">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">
-                                Delete
+                                <i class="bi bi-trash"></i>
                             </button>
                         </form>
                     </td>
