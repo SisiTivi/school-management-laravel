@@ -40,10 +40,9 @@ class AdminController extends Controller
 
         // Create user
         $user = User::create([
-            'email' => $validated['email'],
+            'email' => strtolower($validated['email']),
             'password' => bcrypt($validated['password']),
             'role' => 'ADMIN',
-            'status' => 'ACTIVE'
         ]);
 
         // Create Admin
@@ -51,7 +50,6 @@ class AdminController extends Controller
             'user_id' => $user->id,
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
-            'status' => 'ACTIVE'
         ]);
 
         return redirect()->route('login')->with('success', 'Account has been created');

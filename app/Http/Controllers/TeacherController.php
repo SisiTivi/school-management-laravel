@@ -62,7 +62,7 @@ class TeacherController extends Controller
 
         // create user based on input
         $user = User::create([
-            'email' => $validated['email'],
+            'email' => strtolower($validated['email']),
             'password' => bcrypt($validated['password']),
             'phone_number' => $validated['phone_number'],
             'role' => 'TEACHER'

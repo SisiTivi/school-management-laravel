@@ -27,9 +27,9 @@
                     <th>Last Name</th>
                     <th>Gender</th>
                     <th>School</th>
-                    <th>subject</th>
-                    <th>phone_number</th>
-                    <th>email</th>
+                    <th>Subject</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -37,11 +37,11 @@
                 @foreach ($teachers as $index => $teacher)
                 <tr>
                     <td>{{ $teachers->firstItem() + $index }}</td>
-                    <td>{{ $teacher->first_name }}</td>
-                    <td>{{ $teacher->last_name }}</td>
+                    <td>{{ ucwords($teacher->first_name) }}</td>
+                    <td>{{ ucwords($teacher->last_name) }}</td>
                     <td>{{ ucwords(strtolower($teacher->gender)) }}</td>
                     <td>{{ $teacher->school->legal_name }}</td>
-                    <td>{{ $teacher->subject }}</td>
+                    <td>{{ ucwords($teacher->subject) }}</td>
                     <td>{{ $teacher->user->phone_number }}</td>
                     <td>{{ $teacher->user->email }}</td>
                     <td>
