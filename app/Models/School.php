@@ -24,4 +24,9 @@ class School extends Model
     {
         return $this->hasMany(Teacher::class, 'school_id', 'id');
     }
+    // set email to lowercase
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Admin;
 use App\Models\Student;
+use Attribute;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -62,5 +63,11 @@ class User extends Authenticatable
     public function getDashboardRouteAttribute()
     {
         return $this->role === 'ADMIN' ? route('index.admin') : route('index');
+    }
+
+    // to make the email lowercase
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
     }
 }
