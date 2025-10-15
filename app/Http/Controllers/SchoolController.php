@@ -46,12 +46,12 @@ class SchoolController extends Controller
 
         //create school
         School::create([
-            'legal_name' =>  trim($validated['legal_name']),
-            'commercial_name' => trim($validated['commercial_name']),
+            'legal_name' =>  $validated['legal_name'],
+            'commercial_name' => $validated['commercial_name'],
             'education_level' => $validated['education_level'],
-            'mobile_phone' => trim($validated['mobile_phone']),
-            'email' => strtolower(trim($validated['email'])),
-            'address' => trim($validated['address']),
+            'mobile_phone' => $validated['mobile_phone'],
+            'email' => strtolower($validated['email']),
+            'address' => $validated['address'],
         ]);
 
         // redirect after complete
