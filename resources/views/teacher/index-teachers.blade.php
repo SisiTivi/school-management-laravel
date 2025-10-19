@@ -5,17 +5,7 @@
 <div class="container">
     <div class="row justify-content-between mt-3" id="title_and_addSchoolButton">
         <div class="col-sm-12 col-md-4" id="schoolSectionLeft">
-            <h3>School List</h3>
-        </div>
-        <div class="col-sm-12 col-md-4" id="schoolSectionRight">
-            <a href="{{ route('school.create') }}">
-                <button class="btn btn-primary">
-                    Add School
-                    <span>
-                        <i class="bi bi-plus"></i>
-                    </span>
-                </button>
-            </a>
+            <h3>Teacher List</h3>
         </div>
     </div>
     <section class="col-md-12 mt-3">
