@@ -13,6 +13,7 @@ Route::get('/', function () {
 })->name('index')
     ->middleware('auth');
 
+// ******** Start login process ********//
 // ********* Login Page
 Route::get('login', [AuthController::class, 'loginPage'])
     ->name('login');
@@ -25,30 +26,35 @@ Route::post('login', [AuthController::class, 'login'])
 Route::post('logout', [AuthController::class, 'logout'])
     ->name('logout')
     ->middleware('auth');
+// ******** End login process ********//
 
 
+// can be access only by admin
 Route::middleware(['auth', 'Role:ADMIN'])->group(function () {
     Route::view(
         'admin/index',
         'admin.index-admin'
     )->name('index.admin');
 
+    // admin route
     Route::resource('admin', AdminController::class);
 
+    // school route
     Route::resource('school', SchoolController::class);
 });
 
+// Can be access by admin and teacher
 Route::middleware(['auth', 'Role:ADMIN,TEACHER'])->group(function () {
     // if nest with school
     Route::resource('school.teacher', TeacherController::class);
 
-
+    // standalone route
     Route::prefix('teacher')->name('teacher.')->group(function () {
-        // standalone route index
+        // index
         Route::get('/', [TeacherStandAloneController::class, 'index'])
             ->name('index');
 
-        // standalone route show
+        // show
         Route::get('/{teacher}', [TeacherStandAloneController::class, 'show'])
             ->name('show');
     });
