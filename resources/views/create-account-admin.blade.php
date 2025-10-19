@@ -50,7 +50,7 @@
                 <div class="col-md-6 mb-2">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Enter password" required>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
                         <span class="input-group-text" id="togglePassword">
                             <i class="fa-solid fa-eye-slash"></i>
                         </span>
@@ -60,7 +60,7 @@
                 <div class="col-md-6 mb-2">
                     <label for="confirmPassword" class="form-label">Confirm Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Enter confirm password" required>
+                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Enter confirm password" required>
                         <span class="input-group-text" id="togglePasswordConfirmation">
                             <i class="fa-solid fa-eye-slash"></i>
                         </span>
@@ -83,8 +83,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('passwordInput');
-            const passwordConfirmationInput = document.getElementById('confirmPasswordInput');
+            const passwordInput = document.getElementById('password');
+            const passwordConfirmationInput = document.getElementById('password_confirmation');
 
             const eyeIcon = document.querySelector('#togglePassword i');
             const eyeIconConfirmation = document.querySelector('#togglePasswordConfirmation i');

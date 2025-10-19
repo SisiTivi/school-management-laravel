@@ -35,8 +35,10 @@ class AdminController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string'
+            'password' => 'required|string|confirmed',
         ]);
+
+
 
         // Create user
         $user = User::create([
