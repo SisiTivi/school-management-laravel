@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class);
     }
 
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
     public function getDashboardRouteAttribute()
     {
         return $this->role === 'ADMIN' ? route('index.admin') : route('index');
