@@ -51,7 +51,12 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         @if (Auth::check())
                         <li class="dropdown-item">
-                            welcome, {{ Auth::user()->admin->civility }} {{ Auth::user()->admin->last_name }}
+                            @if(Auth::user()->role=='ADMIN')
+                            welcome, {{ Auth::user()->admin->first_name }} {{ Auth::user()->admin->last_name }}
+                            @endif
+                            @if(Auth::user()->role=='TEACHER')
+                            welcome, {{ Auth::user()->teacher->first_name }} {{ Auth::user()->teacher->last_name }}
+                            @endif
                         </li>
                         @if (Auth::user()->role=='ADMIN')
                         <li>
