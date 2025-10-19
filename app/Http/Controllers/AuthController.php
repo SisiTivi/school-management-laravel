@@ -14,6 +14,11 @@ class AuthController extends Controller
         return view('login');
     }
 
+    public function createAdminAccountPage()
+    {
+        return view('create-account-admin');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
