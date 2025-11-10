@@ -77,7 +77,7 @@
             <div class="col-md-6 mb-5">
                 <label for="confirmPassword" class="form-label">Confirm Password</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Enter confirm password" required>
+                    <input type="password" name="password_confirmation" class="form-control" id="confirmPasswordInput" placeholder="Enter confirm password" required>
                     <span class="input-group-text" id="togglePasswordConfirmation">
                         <i class="fa-solid fa-eye-slash"></i>
                     </span>

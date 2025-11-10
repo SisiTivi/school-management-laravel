@@ -57,7 +57,7 @@ class TeacherController extends Controller
             'subject' => 'required|max:2055',
             'phone_number' => 'required|digits_between:10,15',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string',
+            'password' => 'required|string|confirmed',
         ]);
 
         // create user based on input
